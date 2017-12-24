@@ -1,0 +1,42 @@
+#!/bin/ruby
+
+require 'series_reminder'
+require 'optparse'
+
+series = SeriesReminder::Series.new
+
+OptionParser.new do |opts|
+  opts.banner = 'Series reminder ' + SeriesReminder::VERSION
+
+  opts.on('-o', '--open-series [SERIES]', Integer, 'Open the specified series.') do |s|
+    series.open_series(s)
+  end
+
+  opts.on('-c', '--config [FILE]', String, 'Read config from file.') do |s|
+    series.open_config_file(s)
+  end
+
+  opts.on('-s', '--set-series [SERIES]', String, 'Set last series.') do |s|
+    series.set_last_series(s)
+  end
+
+  opts.on('-r', '--set-regex [REGEX]', String, 'Set custom regex.') do |s|
+    series.set_regexp(s)
+  end
+
+  opts.on('-n', '--next-series', 'Open next series.') do
+    series.open_next
+  end
+
+  opts.on('-l', '--show-last', 'Show number of last viewed series.') do
+    puts "Number of last viewed series: #{series.get_last_series}"
+  end
+
+  opts.on('-i', '--init', 'Init program here.') do
+    series.init_storage()
+  end
+
+  opts.on('-v', '--version', 'Show version of program.') do
+    puts "Series Reminder " + SeriesReminder::VERSION
+  end
+end.parse!
