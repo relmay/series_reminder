@@ -28,6 +28,10 @@ OptionParser.new do |opts|
     series.open_next
   end
 
+  opts.on('-p', '--show-previously', 'Open previously series.') do
+    series.open_series(series.get_last_series)
+  end
+
   opts.on('-l', '--show-last', 'Show number of last viewed series.') do
     puts "Number of last viewed series: #{series.get_last_series}"
   end
