@@ -12,7 +12,7 @@ module SeriesReminder
     end
 
     def open_series(series)
-      Player.open(filename(series))
+      Player.open(filename(series, @storage.get_regexp))
     end
 
     def open_next
