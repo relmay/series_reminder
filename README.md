@@ -1,6 +1,8 @@
 # Series Reminder
 [![Gem Version](https://badge.fury.io/rb/series_reminder.svg)](https://badge.fury.io/rb/series_reminder)
 
+_A simple app that remembers the number of your last viewed series and can play next series._
+
 ## Installation
 
 Install it from rubygems:
